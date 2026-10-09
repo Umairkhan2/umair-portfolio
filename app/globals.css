@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #09090b;
+  --color-surface: #111113;
+  --color-line: #232326;
+  --color-muted: #a1a1aa;
+  --color-accent: #c8f031;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-instrument);
+}
+
+html { scroll-behavior: smooth; }
+body { background: #09090b; color: #fafafa; }
+::selection { background: #c8f031; color: #000; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+.grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at top, #000 30%, transparent 75%);
+}
+.glow { background: radial-gradient(700px circle at 50% 0%, rgba(200,240,49,0.14), transparent 60%); }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 40s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .marquee-track { animation: none; }
+}
